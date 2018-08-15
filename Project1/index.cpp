@@ -27,7 +27,7 @@ int main(int argc, char *argv[])
 	std::string filename = argv[1];
 	std::string pattern = argv[2];
 
-	for (unsigned int i = 0; i < filename.length(); i++)
+	for (size_t  i = 0; i < filename.length(); i++)
 	{
 		if ((int)filename.at(i) < 33 || (int)filename.at(i) > 126)
 		{
@@ -45,7 +45,7 @@ int main(int argc, char *argv[])
 		}
 	}
 
-	for (unsigned int i = 0; i < pattern.length(); i++)
+	for (size_t i = 0; i < pattern.length(); i++)
 	{
 		if ((int)pattern.at(i) < 32 || (int)pattern.at(i) > 126)
 		{
@@ -58,12 +58,12 @@ int main(int argc, char *argv[])
 		}
 	}
 
-	int position = 0;
-	int star_position = -1;
-	int double_star_position = -1;
-	int star_shift = 0;
+	size_t position = 0;
+	size_t star_position = -1;
+	size_t double_star_position = -1;
+	size_t star_shift = 0;
 
-	for (unsigned int i = 0; i < pattern.length(); i++)
+	for (size_t i = 0; i < pattern.length(); i++)
 	{
 		if (pattern.at(i) == '*')
 		{
@@ -126,7 +126,7 @@ int main(int argc, char *argv[])
 		return CHECK_NOT_PASSED;
 	}
 	
-	for (unsigned int i = pattern.length() + position - star_shift; i < filename.length(); i++)
+	for (size_t i = pattern.length() + position - star_shift; i < filename.length(); i++)
 	{
 		if (isSlash(filename, i)) 
 		{
@@ -139,7 +139,7 @@ int main(int argc, char *argv[])
 	return CHECK_PASSED;
 }
 
-bool isSlash(std::string filename, int position)
+bool isSlash(std::string filename, size_t position)
 {
 	if (position >= filename.length())
 	{
